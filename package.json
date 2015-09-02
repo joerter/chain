@@ -4,7 +4,8 @@
   "description": "A don't break the chain app with Mithril",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-js" : "browserify ./src/app.js > ./app.bundle.js",
+    "watch-js" : "watchify -e ./src/app.js -o ./app.bundle.js -dv"
   },
   "keywords": [
     "mithril"
@@ -12,6 +13,10 @@
   "author": "John Oerter",
   "license": "MIT",
   "dependencies": {
+    "browserify": "^11.0.1",
     "mithril": "^0.2.0"
+  },
+  "devDependencies": {
+    "watchify": "^3.3.1"
   }
 }
