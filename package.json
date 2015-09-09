@@ -4,8 +4,15 @@
   "description": "A don't break the chain app with Mithril",
   "main": "index.js",
   "scripts": {
-    "build-js" : "browserify ./src/app.js > ./app.bundle.js",
-    "watch-js" : "watchify -e ./src/app.js -o ./app.bundle.js -dv"
+    "test": "tape ./**/*.test.js | tap-dot",
+    "serve": "npm run watch & npm run browser-sync",
+    "browser-sync": "browser-sync start --server --files='./app.bundle.js, ./app.css'",
+    "watch": "npm run watch-js & npm run watch-sass",
+    "build": "npm run build-js && npm run build-sass",
+    "build-js": "browserify ./src/app.js > ./app.bundle.js",
+    "watch-js": "watchify -e ./src/app.js -o ./app.bundle.js -dv",
+    "build-sass": "node-sass ./src/app.scss ./app.css",
+    "watch-sass": "node-sass -w ./src/app.scss ./app.css"
   },
   "keywords": [
     "mithril"
@@ -17,6 +24,9 @@
     "mithril": "^0.2.0"
   },
   "devDependencies": {
+    "node-sass": "^3.3.2",
+    "tap-dot": "^1.0.0",
+    "tape": "^4.2.0",
     "watchify": "^3.3.1"
   }
 }
