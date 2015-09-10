@@ -4,30 +4,49 @@ var m = require('mithril'),
   calendar = require('./chain.calendar')
 
 module.exports = function(ctrl) {
-  return m("table", seven(function(y) {
-    return m("tr", seven(function(x) {
+  return m(".calendar", seven(function(y) {
+    return m(".week row", seven(function(x) {
       var index = indexAt(x, y)
-      return m("td", highlights(index), [
-        m("input[type=checkbox]", checks(ctrl, index))
+      return m(".day col-md-1", day(ctrl, index), [
+        m("span", icons(ctrl, index))
       ])
     }))
   }))
 }
 
-function checks (ctrl, index) {
+function icons (ctrl, index) {
   return {
-    onclick: function() {
-      ctrl.check(index, this.checked);
-    },
-    checked: ctrl.isChecked(index)
-  };
+    class: getClass()
+  }
+
+  function getClass() {
+    if (calendar.dateAt(index).getTime() > calendar.today().getTime())
+      return
+
+    if (calendar.isToday(index))
+      return ctrl.isChecked(index) ? 'mega-octicon really-more-mega octicon-check' : ''
+
+    return ctrl.isChecked(index) ? 'mega-octicon really-more-mega octicon-check' : 'mega-octicon really-more-mega octicon-x'
+  }
 }
 
-function highlights (index) {
+function day (ctrl, index) {
   return {
-    style: {
-      background: calendar.dateAt(index).getTime() == calendar.today().getTime() ? "silver" : ""
-    }
+    onclick: function() {
+      var status = ctrl.isChecked(index)
+      ctrl.check(index, !status)
+    },
+    class: getClass()
+  }
+
+  function getClass() {
+    if (calendar.dateAt(index).getTime() > calendar.today().getTime())
+      return
+
+    if (calendar.isToday(index))
+      return ctrl.isChecked(index) ? 'checked' : 'today'
+
+    return ctrl.isChecked(index) ? 'checked' : 'not-checked'
   }
 }
 

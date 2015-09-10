@@ -2,7 +2,8 @@
 
 module.exports = {
   today : today,
-  dateAt : dateAt
+  dateAt : dateAt,
+  isToday : isToday
 }
 
 function today () {
@@ -22,4 +23,8 @@ function resetDate () {
 
 function startDate () {
   return new Date(parseInt(localStorage["chain-app.start-date"] || resetDate()));
+}
+
+function isToday(index) {
+  return dateAt(index).getTime() == today().getTime()
 }

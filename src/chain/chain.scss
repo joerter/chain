@@ -1,0 +1,29 @@
+.day {
+  transition: all 500ms ease-in-out;
+  border: 1px solid $gray;
+  height: 100px;
+  line-height: 115px;
+  text-align: center;
+}
+
+.really-more-mega {
+  font-size: 50px;
+}
+
+.today, .checked, .not-checked {
+  cursor: pointer;
+}
+
+.today {
+  background-color: lighten($brand-primary, 20%);
+}
+
+.checked {
+  background-color: lighten($brand-success, 20%);
+  color: $brand-success;
+}
+
+.not-checked {
+  background-color: lighten($brand-danger, 20%);
+  color: $brand-danger;
+}
