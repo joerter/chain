@@ -7,8 +7,11 @@ module.exports = function(ctrl) {
   return m(".calendar", seven(function(y) {
     return m(".week row", seven(function(x) {
       var index = indexAt(x, y)
-      return m(".day col-md-1", day(ctrl, index), [
-        m("span", icons(ctrl, index))
+      return m(".day col-xs-1", day(ctrl, index), [
+        m(".date", calendar.dateAt(index).getDate()),
+        m(".icon", [
+          m("span", icons(ctrl, index))
+        ])
       ])
     }))
   }))

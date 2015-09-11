@@ -2,7 +2,13 @@
   transition: all 500ms ease-in-out;
   border: 1px solid $gray;
   height: 100px;
-  line-height: 115px;
+}
+
+.date {
+  text-align: right;
+}
+
+.icon {
   text-align: center;
 }
 
