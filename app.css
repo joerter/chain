@@ -1,0 +1,27 @@
+.day {
+  transition: all 500ms ease-in-out;
+  border: 1px solid #95a5a6;
+  height: 100px; }
+
+.date {
+  text-align: right; }
+
+.icon {
+  text-align: center; }
+
+.really-more-mega {
+  font-size: 50px; }
+
+.today, .checked, .not-checked {
+  cursor: pointer; }
+
+.today {
+  background-color: #507192; }
+
+.checked {
+  background-color: #51e9cb;
+  color: #18BC9C; }
+
+.not-checked {
+  background-color: #f29f97;
+  color: #E74C3C; }
