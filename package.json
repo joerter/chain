@@ -21,7 +21,8 @@
   "license": "MIT",
   "dependencies": {
     "browserify": "^11.0.1",
-    "mithril": "^0.2.0"
+    "mithril": "^0.2.0",
+    "node-sass": "^3.3.2"
   },
   "devDependencies": {
     "node-sass": "^3.3.2",
