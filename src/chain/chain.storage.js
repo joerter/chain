@@ -1,14 +1,32 @@
 'use strict';
 
+var calendar = require('./chain.calendar')
+
 module.exports = {
   save : save,
-  load : load
+  load : load,
+  createActivity : createActivity,
+  getActivities : getActivities
 }
 
-function save (list) {
-  localStorage['chain-app.list'] = JSON.stringify(list);
+var prefix = 'chain-app.'
+
+function save (list, activityName) {
+  localStorage[prefix + activityName] = JSON.stringify(list);
 }
 
-function load () {
-  return JSON.parse(localStorage['chain-app.list'] || '[]')
+function load (activityName) {
+  return JSON.parse(localStorage[prefix + activityName] || '[]')
+}
+
+function createActivity(name) {
+  var activities = getActivities()
+  activities.push(name)
+
+  localStorage[prefix + 'activities'] = JSON.stringify(activities)
+  localStorage[prefix + name] = JSON.stringify([])
+}
+
+function getActivities() {
+  return JSON.parse(localStorage[prefix + 'activities'] || '[]')
 }

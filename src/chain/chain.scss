@@ -1,3 +1,11 @@
+.list-group-item {
+  cursor: pointer;
+
+  &.current-activity {
+    background: $brand-info;
+  }
+}
+
 .day {
   transition: all 500ms ease-in-out;
   border: 1px solid $gray;

@@ -6,25 +6,27 @@ module.exports = {
   isToday : isToday
 }
 
+var prefix = 'chain-app.'
+
 function today () {
   var now = new Date();
   return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
 }
 
-function dateAt (index) {
-  var date = new Date(startDate());
+function dateAt (index, activityName) {
+  var date = new Date(startDate(activityName));
   date.setDate(date.getDate() + index);
   return date;
 }
 
-function resetDate () {
-  return localStorage["chain-app.start-date"] = today().getTime();
+function resetDate (activityName) {
+  return localStorage[prefix + activityName + '.start-date'] = today().getTime();
 }
 
-function startDate () {
-  return new Date(parseInt(localStorage["chain-app.start-date"] || resetDate()));
+function startDate (activityName) {
+  return new Date(parseInt(localStorage[prefix + activityName + '.start-date'] || resetDate()));
 }
 
-function isToday(index) {
-  return dateAt(index).getTime() == today().getTime()
+function isToday(index, activityName) {
+  return dateAt(index, activityName).getTime() == today().getTime()
 }

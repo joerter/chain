@@ -1,3 +1,8 @@
+.list-group-item {
+  cursor: pointer; }
+  .list-group-item.current-activity {
+    background: #3498DB; }
+
 .day {
   transition: all 500ms ease-in-out;
   border: 1px solid #95a5a6;
